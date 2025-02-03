@@ -7,10 +7,10 @@ function Login(){
     const [email,setEmail]=useState()
     const [password,setPassword]=useState()
     const navigate=useNavigate()
-    
+    axios.defaults.withCredentials=true;
     const handleSubmit=(e)=>{
         e.preventDefault()
-        axios.post('http://localhost:3001/login',{email,password})
+        axios.post('https://login-backend-weld.vercel.app/login',{email,password})
         .then(result=>{console.log(result)
         if(result.data==="Success"){
         navigate('/home')
