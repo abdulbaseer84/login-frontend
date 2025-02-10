@@ -8,14 +8,17 @@ function Signup(){
     const [password,setPassword]=useState()
     const navigate=useNavigate()
     axios.defaults.withCredentials=true;
-    const handleSubmit=(e)=>{
-        e.preventDefault()
-        axios.post('https://login-backend-weld.vercel.app/register',{name,email,password})
-        .then(result=>{console.log(result)
-        navigate('/home')
-        })
-        .catch(err=>console.log(err))
+const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+        const result = await axios.post('https://login-backend-weld.vercel.app/register', { name, email, password });
+        console.log(result);
+        navigate('/home');
+    } catch (err) {
+        console.log(err);
     }
+}
+
     return(
         <div className="d-flex justify-content-center align-items-center bg-secondary vh-100">
             <div className="bg-white p-3 rounded w-25">
